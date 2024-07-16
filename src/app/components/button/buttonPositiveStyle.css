@@ -1,0 +1,15 @@
+#btn-positive {
+    background-color: #64ABFF;
+    height: 48;
+    color: rgb(255, 255, 255);
+    align-self: center;
+    font-weight: 600;
+    font-size: 16;
+    border-radius: 4;
+    transition: 0.2s;
+}
+
+#btn-positive:hover {
+    background-color: #0045BB;
+    transition: 0.2s;
+}

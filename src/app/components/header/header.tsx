@@ -17,8 +17,11 @@ export default function Header() {
 
     return (
         <header className="w-full flex key-color-main h-[48px] items-center pl-4 pr-4" style={{borderBottomWidth: 2, borderColor: "silver"}}>
-            <div className="flex-grow">
+            <div>
                 <ServiceLogo/>
+            </div>
+            <div className="flex-grow">
+                {/* Blank Area */}
             </div>
             <div>
                 <AccountButton onClickHandler={toggleProfile}/>

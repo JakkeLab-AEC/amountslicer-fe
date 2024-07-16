@@ -1,13 +1,17 @@
 import Header from "../components/header/header";
 import Sidebar from "../components/sidebar/sideNavBar";
+import MainViewport from "../components/viewport/mainviewport";
 
 export default function Page() {
     return (
-        <body>
+        <main>
             <Header/>
-            <aside className="h-[100%]">
+            <aside>
                 <Sidebar/>
             </aside>
-        </body>
+            <div style={{position: 'relative'}}>
+                <MainViewport />
+            </div>
+        </main>
     )
 }
