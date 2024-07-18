@@ -1,27 +1,33 @@
 'use client';
 
 import { useState } from "react";
-import MainViewport from "../viewport/mainviewport";
 import Button from "./iconButton";
-import ImportFile from "./pages/importfile/importfile";
 import ImportFiles from "./pages/importfile/importfile";
 import Models from "./pages/models";
 import Measurements from "./pages/measuerments";
 
-export default function Sidebar() {
+export default function Sidebar({files, updateFileList, updateCheckItemList, dropFiles, uploadFileToServer}:
+    {files:File[], updateFileList:(fileList: File[]) => void, updateCheckItemList:(index: number, state: boolean) => void, dropFiles:() => void, uploadFileToServer:() => void}) {
     const [currentMenuIndex, setCurrentMenuIndex] = useState(0);
 
     const navigateMenu = (index: number) => {
         setCurrentMenuIndex(index);
     };
 
-    const menuNavigations: Array<{menuName:string, menuPage: JSX.Element ,menuClickHandler: (index: number) => void}> = [
-        {menuName: "File", menuPage: (<ImportFiles />),menuClickHandler: navigateMenu},
-        {menuName: "Model", menuPage: (<Models />), menuClickHandler: navigateMenu},
-        {menuName: "Measurement", menuPage: (<Measurements />), menuClickHandler: navigateMenu},
+    const menuNavigations: Array<{menuName:string, menuPage: JSX.Element, menuClickHandler: (index: number) => void}> = [{
+            menuName: "File", 
+            menuPage: (<ImportFiles files={files} updateFileList={updateFileList} updateCheckItemList={updateCheckItemList} dropFiles={dropFiles} uploadFileToServer={uploadFileToServer}/>),
+            menuClickHandler: navigateMenu
+        },{
+            menuName: "Model", 
+            menuPage: (<Models />), 
+            menuClickHandler: navigateMenu
+        },{
+            menuName: "Measurement", 
+            menuPage: (<Measurements />), 
+            menuClickHandler: navigateMenu
+        },
     ];
-
-
 
     return (
         <div className="w-[320px] fixed h-full flex flex-row">

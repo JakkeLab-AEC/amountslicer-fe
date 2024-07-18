@@ -1,9 +1,10 @@
 'use client';
 
 import { useEffect, useRef } from "react";
-import { CreateRenderer, RunRenderer } from "../three/threemain";
+import { CreateRenderer, InitiateRenderer } from "@/api/three/threemain";
 
 import './viewportstyle.css'
+import { SceneManager } from "@/model/threeScene/sceneManager";
 
 export default function MainViewport() {    
     const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -12,7 +13,8 @@ export default function MainViewport() {
     useEffect(() => {
         if(canvasRef.current) {
             const renderer = CreateRenderer(canvasRef.current);
-            RunRenderer(renderer, undefined, undefined);
+            const rendererConfig = InitiateRenderer(renderer, undefined, undefined);
+            SceneManager.setInstance(rendererConfig);
         }
     }, [])
 

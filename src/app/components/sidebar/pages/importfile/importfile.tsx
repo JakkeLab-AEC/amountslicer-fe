@@ -1,32 +1,18 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import ButtonNegative from "../../../button/buttonNegative";
 import ButtonPositive from "../../../button/buttonPositive";
 import ListItem from "./listitem";
-import { connectionTest } from "@/api/ifcServerApi";
 
-export default function ImportFiles() {
-    const files:Array<{filename: string, isSelected: boolean}> = [
-        {filename: 'test1.ifc', isSelected: false},
-        {filename: 'test2.ifc', isSelected: false},
-        {filename: 'test3.ifc', isSelected: false},
-    ];
+export default function ImportFiles({files, updateFileList, updateCheckItemList, dropFiles, uploadFileToServer}
+    :{files:File[], updateFileList:(files:File[]) => void, updateCheckItemList:(index: number, state: boolean) => void, dropFiles: () => void, uploadFileToServer:() => void}) {
 
     const fileSelectionSet = new Set();
     const inputFileRef = useRef<HTMLInputElement>(null);
-    
-    const updateCheckItemList = (index: number, state: boolean) => {
-        if(state) fileSelectionSet.add(index);
-        else fileSelectionSet.delete(index);
-        files[index].isSelected = state;
 
-        console.log(fileSelectionSet);
-    }
-
-    // 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if(e.target.files) {
             const selectedFiles = Array.from(e.target.files);
-            console.log(selectedFiles);
+            updateFileList(selectedFiles);
         }
     }
 
@@ -38,11 +24,7 @@ export default function ImportFiles() {
     }
 
     const dropSelectedFile = () => {
-
-    }
-
-    const uploadFile = () => {
-        connectionTest();
+        dropFiles();
     }
 
     return (
@@ -52,7 +34,7 @@ export default function ImportFiles() {
                 {/* <ListItem index={0} text="Files" checkStateUpdater={controlCheckUncheckAll}/> */}
                 {/* Lists */}
                 {files.map((item, index) => {
-                    return <ListItem key={index} index={index} text={item.filename} checkStateUpdater={updateCheckItemList} />;
+                    return <ListItem key={index} index={index} file={item} checkStateUpdater={updateCheckItemList} />;
                 })}
             </div>
             <div className="flex flex-row gap-1">
@@ -62,10 +44,11 @@ export default function ImportFiles() {
             </div>
             <div>
                 {/* Upload control */}
-                <ButtonPositive text="Upload" width={'100%'} onClickHandler={uploadFile} />
+                <ButtonPositive text="Upload" width={'100%'} onClickHandler={uploadFileToServer} />
             </div>
             <input
                 type="file"
+                accept=".ifc"
                 ref={inputFileRef}
                 style={{display: 'none'}}
                 onChange={handleFileChange}
