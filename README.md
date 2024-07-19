@@ -56,7 +56,7 @@ npm run dev
 3. Open the address
 
 ```
-http://localhost:3000/viewport
+http://localhost:3000/viewer
 ```
 Actually, this app uses dotenv to resolve server config. So please make .env file on the root directory.
 
@@ -80,5 +80,7 @@ Please match values with FastAPI based server on the bottom of this document.
 
 
 ---
+
+### Server App
 
 Server Repository : https://github.com/JakkeLab-AEC/amountslicer-server-core
