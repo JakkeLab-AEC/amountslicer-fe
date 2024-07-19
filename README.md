@@ -3,7 +3,7 @@
 Web based service IFC handling service.
 (Under construction)
 
-### Used Stack (Framework, Libray, ...)
+### Used Stack (Framework, Library, ...)
 Next.js, React, Three.js (No R3F used)
 
 ### Description
