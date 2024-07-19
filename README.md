@@ -1,6 +1,7 @@
 # Amount Slicer
 
 Web based service IFC handling service.
+(Under construction)
 
 ### Used Stack (Framework, Libray, ...)
 Next.js, React, Three.js
