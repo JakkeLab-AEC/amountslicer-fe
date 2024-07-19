@@ -44,7 +44,7 @@ Parsable elements will be updated gradually.
 
 ---
 ### How to see Ifc Viewer page
-- Currently, I'm concentrating on three.js viewport pagg. Thus, please following below
+- Currently, I'm concentrating on three.js viewport pagg. Thus, please follow below steps
 
 1. Run the server app. Server app repository link is on the below of this README.MD
 
@@ -58,6 +58,26 @@ npm run dev
 ```
 http://localhost:3000/viewport
 ```
+Actually, this app uses dotenv to resolve server config. So please make .env file on the root directory.
+
+```javascript
+    ...
+    // env section of next.config.mjs
+    env: {
+        IFC_SERVER_HOST: process.env.SERVER_HOST,
+        IFC_SERVER_PORT: process.env.SERVER_PORT,
+    }
+    ...
+```
+
+
+```.env
+SERVER_HOST=<YOUR HOST>
+SERVER_PORT=<YOUR PORT>
+```
+
+Please match values with FastAPI based server on the bottom of this document. 
+
 
 ---
 
