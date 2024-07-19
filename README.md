@@ -43,5 +43,22 @@ Through this process, the IFC File rendering can be done on three.js canvas.
 Parsable elements will be updated gradually.
 
 ---
+### How to see Ifc Viewer page
+- Currently, I'm concentrating on three.js viewport pagg. Thus, please following below
+
+1. Run the server app. Server app repository link is on the below of this README.MD
+
+2. Run terminal at the directory of this repository, and type this command.
+```
+npm run dev
+```
+
+3. Open the address
+
+```
+http://localhost:3000/viewport
+```
+
+---
 
 Server Repository : https://github.com/JakkeLab-AEC/amountslicer-server-core
