@@ -37,4 +37,11 @@ Through this process, the IFC File rendering can be done on three.js canvas.
 
 ---
 
+### Current parsable Element
+- Slab (IfcSlab)
+
+Parsable elements will be updated gradually.
+
+---
+
 Server Repository : https://github.com/JakkeLab-AEC/amountslicer-server-core
